@@ -32,3 +32,44 @@ body {
     background-color: yellow;
     transition: background-color 0.3s ease;
 }
+
+#restartBtn {
+    margin-top: 20px; /* Adds some space above the button */
+    padding: 10px 20px; /* Adds padding inside the button */
+    font-size: 18px; /* Increases the font size */
+    background-color: transparent; /* Transparent background by default */
+    color: #4CAF50; /* Green text color */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 5px; /* Rounds the corners of the button */
+    cursor: pointer; /* Shows a pointer when hovering over the button */
+    transition: background-color 0.3s, color 0.3s, transform 0.2s ease; /* Smooth transition for hover effects */
+}
+
+#restartBtn:hover {
+    background-color: #4CAF50; /* Green background on hover */
+    color: white; /* White text color when hovered */
+    transform: scale(1.1); /* Slightly enlarges the button on hover */
+}
+
+#restartBtn:active {
+    transform: scale(1); /* Resets the size when the button is clicked */
+}
+
+#gameWrapper {
+    display: flex; /* Use flexbox to arrange side by side */
+    justify-content: center; /* Centers content horizontally */
+    align-items: flex-start; /* Align to the top */
+    gap: 20px; /* Space between sidebar and game */
+}
+
+#sideBar {
+    display: flex;
+    flex-direction: column; /* Stack score and timer vertically */
+    gap: 10px;
+    font-size: 18px; /* Same font size for everything */
+    text-align: left; /* Align text to the left */
+}
+
+#scoreBoard p, #timer p {
+    margin: 0;
+}

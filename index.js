@@ -1,6 +1,7 @@
 const cells = document.querySelectorAll(".cell");
 const statusText = document.querySelector("#statusText");
 const restartBtn = document.querySelector("#restartBtn");
+const timerDisplay = document.getElementById("timer");
 const winConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -17,6 +18,8 @@ let running = true;
 let scoreX = 0;
 let scoreO = 0;
 let scoreDraws = 0;
+let timeLeft = 10;
+let timer;
 
 initializeGame();
 
@@ -45,6 +48,8 @@ function updateCell(cell, index){
 function changePlayer(){
     currentPlayer = (currentPlayer == "X") ? "O" : "X";
     statusText.textContent = `${currentPlayer}'s turn`
+    stopTimer();
+    startTimer();
 }
 
 function checkWinner(){
@@ -105,5 +110,25 @@ function restartGame(){
         cell.textContent = "";``
         cell.classList.remove("highlight");
     });    
+    stopTimer();
+    startTimer();
     running = true;
+}
+
+function startTimer() {
+    timeLeft = 10;
+    timerDisplay.textContent = `Time left: ${timeLeft}s`;
+
+    timer = setInterval(() => {
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            changePlayer();
+        } else {
+            timeLeft--;
+            timerDisplay.textContent = `Time left: ${timeLeft}s`;
+        }
+    }, 1000);
+}
+function stopTimer(){
+    clearInterval(timer);
 }
