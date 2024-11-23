@@ -132,3 +132,28 @@ function startTimer() {
 function stopTimer(){
     clearInterval(timer);
 }
+
+// --------------toggle dark mode---------------
+
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const body = document.body;
+const gameContainer = document.getElementById('gameContainer');
+const scoreBoard = document.getElementById('scoreBoard');
+
+// Event listener for the theme toggle button
+themeToggleBtn.addEventListener('click', () => {
+    // Toggle dark theme class on body and other elements
+    body.classList.toggle('dark-theme');
+    gameContainer.classList.toggle('dark-theme');
+    cells.forEach(cell => cell.classList.toggle('dark-theme'));
+    scoreBoard.classList.toggle('dark-theme');
+    timer.classList.toggle('dark-theme');
+    restartBtn.classList.toggle('dark-theme');
+    
+    // Toggle button text based on theme
+    if (body.classList.contains('dark-theme')) {
+        themeToggleBtn.textContent = 'Switch to Light Mode';
+    } else {
+        themeToggleBtn.textContent = 'Switch to Dark Mode';
+    }
+});
